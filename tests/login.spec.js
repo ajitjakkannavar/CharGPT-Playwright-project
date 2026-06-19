@@ -23,26 +23,15 @@ test.describe('SauceDemo - Ultimate Data-Driven Login Suite', () => {
     }
   }
 
- 
-
-  // Suite 1: Functional & Equivalence Partitioning
-  test.describe('Functional Scenarios', () => {
-    testData.functionalScenarios.forEach((data) => {
-      test(`Functional - ${data.scenario}`, async ({ page }) => {
-        await loginPage.login(data.username, data.password);
-        await verifyLoginOutcome(page, data);
-      });
-    });
-  });
 
 
   //suite1:Functional & equivalence Partitioning 
-  test.describe('Functional scenarios',()=>{
-    testData.functionalScenarios.forEach((data)=>{
+  test.describe('Functional scenarios', () => {
+    testData.functionalScenarios.forEach((data) => {
       test(`Functional - ${data.scenario}`, async ({ page }) => {
-      await loginPage.login(data.username,data.password)
-      await verifyLoginOutcome(page,data)
-    })
+        await loginPage.login(data.username, data.password)
+        await verifyLoginOutcome(page, data)
+      })
     })
   })
 
