@@ -1,0 +1,25 @@
+{
+    "functionalScenarios": [
+      { "scenario": "Valid User", "username": "standard_user", "password": "secret_sauce", "expectedResult": "Login Success", "errorMsg": "" },
+      { "scenario": "Locked User", "username": "locked_out_user", "password": "secret_sauce", "expectedResult": "Login Failed", "errorMsg": "Epic sadface: Sorry, this user has been locked out." },
+      { "scenario": "Invalid Username", "username": "invalid_user", "password": "secret_sauce", "expectedResult": "Login Failed", "errorMsg": "Epic sadface: Username and password do not match any user in this service" },
+      { "scenario": "Invalid Password", "username": "standard_user", "password": "wrong_password", "expectedResult": "Login Failed", "errorMsg": "Epic sadface: Username and password do not match any user in this service" },
+      { "scenario": "Invalid Credentials", "username": "invalid_user", "password": "wrong_password", "expectedResult": "Login Failed", "errorMsg": "Epic sadface: Username and password do not match any user in this service" },
+      { "scenario": "Empty Username", "username": "", "password": "secret_sauce", "expectedResult": "Validation Error", "errorMsg": "Epic sadface: Username is required" },
+      { "scenario": "Empty Password", "username": "standard_user", "password": "", "expectedResult": "Validation Error", "errorMsg": "Epic sadface: Password is required" },
+      { "scenario": "Empty Credentials", "username": "", "password": "", "expectedResult": "Validation Error", "errorMsg": "Epic sadface: Username is required" }
+    ],
+    "boundaryScenarios": [
+      { "scenario": "Username Min Length", "username": "a", "password": "secret_sauce", "expectedResult": "Login Failed", "errorMsg": "Epic sadface: Username and password do not match any user in this service" },
+      { "scenario": "Username Max Length", "username": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "password": "secret_sauce", "expectedResult": "Login Failed", "errorMsg": "Epic sadface: Username and password do not match any user in this service" },
+      { "scenario": "Password Min Length", "username": "standard_user", "password": "a", "expectedResult": "Login Failed", "errorMsg": "Epic sadface: Username and password do not match any user in this service" },
+      { "scenario": "Password Max Length", "username": "standard_user", "password": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "expectedResult": "Login Failed", "errorMsg": "Epic sadface: Username and password do not match any user in this service" },
+      { "scenario": "Leading Trailing Spaces", "username": " standard_user ", "password": " secret_sauce ", "expectedResult": "Login Failed", "errorMsg": "Epic sadface: Username and password do not match any user in this service" }
+    ],
+    "securityScenarios": [
+      { "scenario": "SQL Injection Username", "username": "' OR '1'='1", "password": "secret_sauce", "expectedResult": "Login Failed", "errorMsg": "Epic sadface: Username and password do not match any user in this service" },
+      { "scenario": "SQL Injection Password", "username": "standard_user", "password": "' OR '1'='1", "expectedResult": "Login Failed", "errorMsg": "Epic sadface: Username and password do not match any user in this service" },
+      { "scenario": "XSS Username", "username": "<script>alert('x')</script>", "password": "secret_sauce", "expectedResult": "Login Failed", "errorMsg": "Epic sadface: Username and password do not match any user in this service" },
+      { "scenario": "XSS Password", "username": "standard_user", "password": "<script>alert('x')</script>", "expectedResult": "Login Failed", "errorMsg": "Epic sadface: Username and password do not match any user in this service" }
+    ]
+  }
